@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "route": "/v1/get-autocomplete",
+      "method": "GET",
+      "controller": "../controllers/v1/azure-search/get-autocomplete"
+    },
+    {
+      "route": "/v1/get-search",
+      "method": "GET",
+      "controller": "../controllers/v1/azure-search/get-search"
+    }
+  ]
+}
