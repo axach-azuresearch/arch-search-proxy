@@ -1,3 +1,4 @@
+var config = require('./config.json');
 var request = require('request');
 
 function GetAutocompleteController() {
@@ -7,9 +8,9 @@ function getAutocompleteController(req, res, next) {
   if (!req.query.search) {
     res.status(200).json({});
   } else {
-    var apiKey = "xxx";
-    var apiVersion = "2016-09-01";
-    var url = "https://xxx.../docs/suggest?suggesterName=sg&$orderby=name&api-version=" + apiVersion + "&search=" + req.query.search;
+    var apiKey = config.apiKey;
+    var apiVersion = config.apiVersion;
+    var url = config.apiUrl + "/suggest?suggesterName=sg&$orderby=name&api-version=" + apiVersion + "&search=" + req.query.search;
        
     var options = {
       url: url,

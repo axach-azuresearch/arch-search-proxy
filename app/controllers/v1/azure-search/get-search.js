@@ -1,3 +1,4 @@
+var config = require('./config.json');
 var request = require('request');
 
 function GetSearchController() {
@@ -7,11 +8,9 @@ function getSearchController(req, res, next) {
   if (!req.query.search) {
     res.status(200).json({});
   } else {
-    var apiKey = 'xxx';
-    var apiVersion = '2016-09-01';
-    var url = 'https://xxx.../docs' + '?api-version=' + apiVersion + '&$count=true' + '&searchMode=all' + 
-                '&search=' + req.query.search + 
-                '&$filter=' + req.query.$filter;
+    var apiKey = config.apiKey;
+    var apiVersion = config.apiVersion;
+    var url = config.apiUrl + '?api-version=' + apiVersion + '&$count=true' + '&searchMode=all' + '&search=' + req.query.search + '&$filter=' + req.query.$filter;
     
     if (req.query.scoringProfile != undefined) {
       url = url + "&scoringProfile=" + req.query.scoringProfile;
@@ -23,7 +22,7 @@ function getSearchController(req, res, next) {
   
     console.log("***************************************************************************************");
     console.log("URI FROM CLIENT:");
-    console.log("https://arch-search-proxy.azurewebsites.net" + req.originalUrl + " -> ");
+    console.log("https://<hostname>" + req.originalUrl + " -> ");
     console.log("URI TO SEARCH:");
     console.log(url);
     console.log("***************************************************************************************");
